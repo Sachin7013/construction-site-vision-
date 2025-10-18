@@ -75,50 +75,44 @@
             <ul class="navbar-nav flex-column" id="navbarVerticalNav">
               <li class="nav-item">
                 <!-- parent pages-->
-                <div class="nav-item-wrapper"><a class="nav-link dropdown-indicator label-1" href="#nv-home" role="button" data-bs-toggle="collapse" aria-expanded="true" aria-controls="nv-home">
+                <div class="nav-item-wrapper"><a class="nav-link dropdown-indicator label-1" href="#nv-dashboard" role="button" data-bs-toggle="collapse" aria-expanded="true" aria-controls="nv-dashboard">
                     <div class="d-flex align-items-center">
-                      <div class="dropdown-indicator-icon-wrapper"><span class="fas fa-caret-right dropdown-indicator-icon"></span></div><span class="nav-link-icon"><span data-feather="pie-chart"></span></span><span class="nav-link-text">Home</span>
+                      <div class="dropdown-indicator-icon-wrapper"><span class="fas fa-caret-right dropdown-indicator-icon"></span></div><span class="nav-link-icon"><span data-feather="monitor"></span></span><span class="nav-link-text">Dashboard</span>
                     </div>
                   </a>
                   <div class="parent-wrapper label-1">
-                    <ul class="nav collapse parent show" data-bs-parent="#navbarVerticalCollapse" id="nv-home">
-                      <li class="collapsed-nav-item-title d-none">Home
+                    <ul class="nav collapse parent show" data-bs-parent="#navbarVerticalCollapse" id="nv-dashboard">
+                      <li class="collapsed-nav-item-title d-none">Dashboard
                       </li>
-                      <li class="nav-item"><a class="nav-link" href="../index.html">
-                          <div class="d-flex align-items-center"><span class="nav-link-text">E commerce</span>
+                      <li class="nav-item"><a class="nav-link active" href="../dashboard/construction-overview.html">
+                          <div class="d-flex align-items-center"><span class="nav-link-text">Site Overview</span>
                           </div>
                         </a>
-                        <!-- more inner pages-->
                       </li>
-                      <li class="nav-item"><a class="nav-link" href="../dashboard/project-management.html">
-                          <div class="d-flex align-items-center"><span class="nav-link-text">Project management</span>
+                      <li class="nav-item"><a class="nav-link" href="../dashboard/live-monitoring.html">
+                          <div class="d-flex align-items-center"><span class="nav-link-text">Live Monitoring</span>
                           </div>
                         </a>
-                        <!-- more inner pages-->
                       </li>
-                      <li class="nav-item"><a class="nav-link active" href="../dashboard/crm.html">
-                          <div class="d-flex align-items-center"><span class="nav-link-text">CRM</span>
+                      <li class="nav-item"><a class="nav-link" href="../dashboard/safety-analytics.html">
+                          <div class="d-flex align-items-center"><span class="nav-link-text">Safety Analytics</span>
                           </div>
                         </a>
-                        <!-- more inner pages-->
                       </li>
-                      <li class="nav-item"><a class="nav-link" href="../dashboard/travel-agency.html">
-                          <div class="d-flex align-items-center"><span class="nav-link-text">Travel agency</span>
+                      <li class="nav-item"><a class="nav-link" href="../dashboard/worker-tracking.html">
+                          <div class="d-flex align-items-center"><span class="nav-link-text">Worker Tracking</span>
                           </div>
                         </a>
-                        <!-- more inner pages-->
                       </li>
-                      <li class="nav-item"><a class="nav-link" href="../dashboard/stock.html">
-                          <div class="d-flex align-items-center"><span class="nav-link-text">Stock</span><span class="badge ms-2 badge badge-phoenix badge-phoenix-warning ">new</span>
+                      <li class="nav-item"><a class="nav-link" href="../dashboard/equipment-monitoring.html">
+                          <div class="d-flex align-items-center"><span class="nav-link-text">Equipment Monitor</span>
                           </div>
                         </a>
-                        <!-- more inner pages-->
                       </li>
-                      <li class="nav-item"><a class="nav-link" href="../apps/social/feed.html">
-                          <div class="d-flex align-items-center"><span class="nav-link-text">Social feed</span>
+                      <li class="nav-item"><a class="nav-link" href="../dashboard/incident-reports.html">
+                          <div class="d-flex align-items-center"><span class="nav-link-text">Incident Reports</span><span class="badge ms-2 badge badge-phoenix badge-phoenix-danger">alert</span>
                           </div>
                         </a>
-                        <!-- more inner pages-->
                       </li>
                     </ul>
                   </div>
@@ -296,74 +290,58 @@
           <div class="col-xxl-6">
             <h2 class="mb-2 text-body-emphasis">Live Camera Surveillance</h2>
             <h5 class="text-body-tertiary fw-semibold mb-4">Check your cameras live all time with AlgoOrange Vision AI</h5>
-            <div class="row g-3 mb-4 align-items-stretch">
-              <div class="col-sm-6 col-md-4 col-xl-3 col-xxl-4">
-                <div class="card h-100">
-                  <div class="card-body p-3">
-                    <div class="d-flex flex-column h-100">
-                      <div class="flex-grow-1">
-                        <div class="d-flex align-items-center">
-                          <div class="d-flex align-items-center icon-wrapper-sm shadow-primary-100" style="transform: rotate(-7.45deg);"><span class="fa-solid fa-video text-primary fs-7 z-1 ms-2"></span></div>
-                          <p class="text-body-tertiary fs-9 mb-0 ms-2 mt-3">Active Cameras</p>
-                        </div>
-                        <p class="text-primary mt-2 fs-6 fw-bold mb-0 mb-sm-4">8 <span class="fs-8 text-body lh-lg">Cameras</span></p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-md-4 col-xl-3 col-xxl-4">
-                <div class="card h-100">
-                  <div class="card-body p-3">
-                    <div class="d-flex flex-column h-100">
-                      <div class="flex-grow-1">
-                        <div class="d-flex align-items-center">
-                          <div class="d-flex align-items-center icon-wrapper-sm shadow-primary-100" style="transform: rotate(-7.45deg);"><span class="fa-solid fa-users text-primary fs-7 z-1 ms-2"></span></div>
-                          <p class="text-body-tertiary fs-9 mb-0 ms-2 mt-3">Active Workers</p>
-                        </div>
-                        <p class="text-primary mt-2 fs-6 fw-bold mb-0 mb-sm-4">15 <span class="fs-8 text-body lh-lg">Workers</span></p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-md-4 col-xl-3 col-xxl-4">
-                <div class="card h-100">
-                  <div class="card-body p-3">
-                    <div class="d-flex flex-column h-100">
-                      <div class="flex-grow-1">
-                        <div class="d-flex align-items-center">
-                          <div class="d-flex align-items-center icon-wrapper-sm shadow-danger-100" style="transform: rotate(-7.45deg);"><span class="fa-solid fa-exclamation-triangle text-danger fs-7 z-1 ms-2"></span></div>
-                          <p class="text-body-tertiary fs-9 mb-0 ms-2 mt-3">Safety Violations</p>
-                        </div>
-                        <p class="text-danger mt-2 fs-6 fw-bold mb-0 mb-sm-4">2 <span class="fs-8 text-body lh-lg">Violations</span></p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-md-4 col-xl-3 col-xxl-4">
-                <div class="card h-100">
-                  <div class="card-body p-3">
-                    <div class="d-flex flex-column h-100">
-                      <div class="flex-grow-1">
-                        <div class="d-flex align-items-center">
-                          <div class="d-flex align-items-center icon-wrapper-sm shadow-info-100" style="transform: rotate(-7.45deg);"><span class="fa-solid fa-hard-hat text-info fs-7 z-1 ms-2"></span></div>
-                          <p class="text-body-tertiary fs-9 mb-0 ms-2 mt-3">People Wearing Helmet</p>
-                        </div>
-                        <p class="text-info mt-2 fs-6 fw-bold mb-0 mb-sm-4">12 <span class="fs-8 text-body lh-lg">People</span></p>
-                      </div>
-                    </div>  
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Live Camera Feeds Section -->
             <div class="row g-3 mb-4">
-              <div class="col-12">
-                <h3 class="mb-3 text-body-emphasis">Live Camera Feeds</h3>
-                <p class="text-body-tertiary mb-4">Real-time detection across 8 monitoring zones</p>
+              <div class="col-sm-6 col-md-4 col-xl-3 col-xxl-4">
+                <div class="card">
+                  <div class="card-body p-2">
+                    <div class="d-flex align-items-center">
+                      <div class="d-flex align-items-center icon-wrapper-sm shadow-primary-100 me-2" style="transform: rotate(-7.45deg);"><span class="fa-solid fa-video text-primary fs-7 z-1 ms-2"></span></div>
+                      <div class="flex-grow-1">
+                        <p class="text-body-tertiary fs-9 mb-1">Active Cameras</p>
+                        <p class="text-primary fs-6 fw-bold mb-0">8 <span class="fs-8 text-body">Cameras</span></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-4 col-xl-3 col-xxl-4">
+                <div class="card">
+                  <div class="card-body p-2">
+                    <div class="d-flex align-items-center">
+                      <div class="d-flex align-items-center icon-wrapper-sm shadow-primary-100 me-2" style="transform: rotate(-7.45deg);"><span class="fa-solid fa-users text-primary fs-7 z-1 ms-2"></span></div>
+                      <div class="flex-grow-1">
+                        <p class="text-body-tertiary fs-9 mb-1">Active Workers</p>
+                        <p class="text-primary fs-6 fw-bold mb-0">15 <span class="fs-8 text-body">Workers</span></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-4 col-xl-3 col-xxl-4">
+                <div class="card">
+                  <div class="card-body p-2">
+                    <div class="d-flex align-items-center">
+                      <div class="d-flex align-items-center icon-wrapper-sm shadow-danger-100 me-2" style="transform: rotate(-7.45deg);"><span class="fa-solid fa-exclamation-triangle text-danger fs-7 z-1 ms-2"></span></div>
+                      <div class="flex-grow-1">
+                        <p class="text-body-tertiary fs-9 mb-1">Safety Violations</p>
+                        <p class="text-danger fs-6 fw-bold mb-0">2 <span class="fs-8 text-body">Violations</span></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-4 col-xl-3 col-xxl-4">
+                <div class="card">
+                  <div class="card-body p-2">
+                    <div class="d-flex align-items-center">
+                      <div class="d-flex align-items-center icon-wrapper-sm shadow-info-100 me-2" style="transform: rotate(-7.45deg);"><span class="fa-solid fa-hard-hat text-info fs-7 z-1 ms-2"></span></div>
+                      <div class="flex-grow-1">
+                        <p class="text-body-tertiary fs-9 mb-1">People Wearing Helmet</p>
+                        <p class="text-info fs-6 fw-bold mb-0">12 <span class="fs-8 text-body">People</span></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -603,26 +581,6 @@
         </div>
       </div>
     </main>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
