@@ -76,14 +76,8 @@
               <li class="nav-item">
                 <!-- parent pages-->
                 <div class="nav-item-wrapper"><a class="nav-link dropdown-indicator label-1" href="#nv-dashboard" role="button" data-bs-toggle="collapse" aria-expanded="true" aria-controls="nv-dashboard">
-                    <div class="d-flex align-items-center">
-                      <div class="dropdown-indicator-icon-wrapper"><span class="fas fa-caret-right dropdown-indicator-icon"></span></div><span class="nav-link-icon"><span data-feather="monitor"></span></span><span class="nav-link-text">Dashboard</span>
-                    </div>
                   </a>
                   <div class="parent-wrapper label-1">
-                    <ul class="nav collapse parent show" data-bs-parent="#navbarVerticalCollapse" id="nv-dashboard">
-                      <li class="collapsed-nav-item-title d-none">Dashboard
-                      </li>
                       <li class="nav-item"><a class="nav-link active" href="../dashboard/construction-overview.html">
                           <div class="d-flex align-items-center"><span class="nav-link-text">Site Overview</span>
                           </div>
@@ -114,7 +108,6 @@
                           </div>
                         </a>
                       </li>
-                    </ul>
                   </div>
                 </div>
               </li>
@@ -607,14 +600,14 @@
 
     <!-- Offcanvas AI Chat -->
     <!-- ChatGPT-style Chat Interface -->
-    <div class="offcanvas offcanvas-end settings-panel border-0 bg-body" id="settings-offcanvas" tabindex="-1" aria-labelledby="settings-offcanvas">
+    <div class="offcanvas offcanvas-end settings-panel border-0 bg-body" id="settings-offcanvas" tabindex="-1" aria-labelledby="settings-offcanvas" data-chat-mode="normal">
         <div class="chatgpt-container h-100 d-flex flex-column bg-body">
             <!-- Header -->
             <div class="chatgpt-header px-4 py-3 border-bottom border-translucent flex-shrink-0 bg-body">
                 <div class="d-flex align-items-center justify-content-between">
                     <div class="d-flex align-items-center gap-2">
                         <img src="/Logo/icon.png" alt="AlgoOrange Vision AI" width="24" height="24" class="rounded" />
-                        <span class="text-body fw-semibold fs-7">Algo Vision Assistant</span>
+                        <span class="text-body fw-semibold fs-7" id="chat-header-title">Algo Vision Assistant</span>
                         <span class="fa-solid fa-circle text-success" style="font-size: 8px;"></span>
                     </div>
                     <div class="btn-reveal-trigger">
@@ -632,20 +625,44 @@
                 </div>
             </div>
             
-            <!-- Chat Messages Container -->
-            <div class="chatgpt-messages flex-grow-1 overflow-auto py-4 bg-body">
-                <div id="chat-content-body" class="mx-auto px-4" style="max-width: 768px;">
-                    <!-- Chat messages will be dynamically added here -->
+            <!-- Scrollable Content Area (Video + Chat Messages) -->
+            <div class="flex-grow-1 overflow-auto bg-body">
+                <!-- Video Player Container (only visible in camera mode) -->
+                <div id="chat-video-container" class="d-none bg-dark">
+                    <div class="position-relative">
+                        <video id="chat-video-player" class="w-100" style="height: 250px; object-fit: contain;" autoplay muted loop controls>
+                            <source id="chat-video-source" src="" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="position-absolute top-0 start-0 p-3">
+                            <span class="badge bg-danger fs-9">LIVE</span>
+                        </div>
+                        <div class="position-absolute top-0 end-0 p-3">
+                            <button class="btn btn-sm btn-light rounded-circle" onclick="toggleVideoFullscreen()" title="Toggle Fullscreen">
+                                <i class="fas fa-expand"></i>
+                            </button>
+                        </div>
+                        <div class="position-absolute bottom-0 start-0 p-3">
+                            <span class="badge bg-dark bg-opacity-75 text-white" id="chat-video-timestamp"></span>
+                        </div>
+                    </div>
                 </div>
                 
-                <div id="typing-indicator" class="d-none mx-auto px-4" style="max-width: 768px;">
-                    <div class="d-flex gap-3 align-items-center mb-4">
-                        <div class="avatar rounded-circle d-flex align-items-center justify-content-center flex-shrink-0" style="width: 32px; height: 32px; background: #f8f9fa; border: 1px solid #dee2e6;">
-                            <img src="/Logo/icon.png" alt="AI" style="width: 20px; height: 20px; object-fit: contain;" />
-                        </div>
-                        <div class="text-body-tertiary d-flex align-items-center gap-2" style="font-size: 14px;">
-                            <i class="fa fa-spinner fa-spin"></i>
-                            <span>Intelligence Incoming...</span>
+                <!-- Chat Messages Container -->
+                <div class="chatgpt-messages py-4">
+                    <div id="chat-content-body" class="mx-auto px-4" style="max-width: 768px;">
+                        <!-- Chat messages will be dynamically added here -->
+                    </div>
+                    
+                    <div id="typing-indicator" class="d-none mx-auto px-4" style="max-width: 768px;">
+                        <div class="d-flex gap-3 align-items-center mb-4">
+                            <div class="avatar rounded-circle d-flex align-items-center justify-content-center flex-shrink-0" style="width: 32px; height: 32px; background: #f8f9fa; border: 1px solid #dee2e6;">
+                                <img src="/Logo/icon.png" alt="AI" style="width: 20px; height: 20px; object-fit: contain;" />
+                            </div>
+                            <div class="text-body-tertiary d-flex align-items-center gap-2" style="font-size: 14px;">
+                                <i class="fa fa-spinner fa-spin"></i>
+                                <span>Intelligence Incoming...</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -658,7 +675,7 @@
                         <button class="btn p-0 border-0 text-body-tertiary me-2" style="font-size: 16px; padding: 4px;">
                             <i class="fas fa-plus"></i>
                         </button>
-                        <input id="offcanvas-chat-textarea" type="text" placeholder="Ask anything" class="form-control border-0 bg-transparent text-body flex-grow-1 px-0" style="font-size: 14px; line-height: 1.3; padding: 4px 0; box-shadow: none !important; outline: none !important;" />
+                        <input id="offcanvas-chat-textarea" type="text" placeholder="Ask anything" class="form-control border-0 bg-transparent text-body flex-grow-1 px-0" style="font-size: 14px; line-height: 1.3; padding: 8px 0; box-shadow: none !important; outline: none !important;" />
                         <input class="d-none" type="file" accept="image/*" id="supportChatPhotos" />
                         <input class="d-none" type="file" id="supportChatAttachment" />
                         <button class="btn p-0 border-0 text-body-tertiary me-2" style="font-size: 16px; padding: 4px;">
@@ -696,6 +713,7 @@
     <!-- AI Chat JavaScript -->
     <script>
         let aiChatContext = null;
+        let videoTimestampInterval = null;
         
         // Phoenix Theme Toggle
         function toggleTheme() {
@@ -819,10 +837,10 @@
                 
                 chatBody.appendChild(messageGroup);
                 
-                // Scroll to bottom smoothly
-                const chatContainer = chatBody.parentElement;
-                chatContainer.scrollTo({
-                    top: chatContainer.scrollHeight,
+                // Scroll to bottom smoothly - target the scrollable container that includes video + messages
+                const scrollableContainer = chatBody.parentElement.parentElement;
+                scrollableContainer.scrollTo({
+                    top: scrollableContainer.scrollHeight,
                     behavior: 'smooth'
                 });
                 
@@ -832,13 +850,9 @@
             getEvidenceForCamera: function(cameraNumber) {
                 // Evidence mapping based on actual folder structure
                 const evidenceMap = {
-                    1: ['/evidence/camara 1/Screenshot 2025-10-13 165235.png', '/evidence/camara 1/Screenshot 2025-10-13 165310.png'],
-                    2: ['/evidence/camara 2/Screenshot 2025-10-13 165433.png', '/evidence/camara 2/Screenshot 2025-10-13 165440.png', 
-                        '/evidence/camara 2/Screenshot 2025-10-13 165445.png', '/evidence/camara 2/Screenshot 2025-10-13 165448.png', 
-                        '/evidence/camara 2/Screenshot 2025-10-13 165453.png'],
-                    3: ['/evidence/camara 3/Screenshot 2025-10-13 165640.png', '/evidence/camara 3/Screenshot 2025-10-13 165644.png',
-                        '/evidence/camara 3/Screenshot 2025-10-13 165649.png'],
-                    4: ['/evidence/camara 4/Screenshot 2025-10-13 165829.png'],
+                    4: ['/evidence/camara 4/Screenshot 2025-10-11 133639.png'],
+                    6: ['/evidence/camara 6/Screenshot 2025-10-11 133302.png', '/evidence/camara 6/Screenshot 2025-10-11 133312.png'],
+                    7: ['/evidence/camara 7/Screenshot 2025-10-11 133443.png', '/evidence/camara 7/Screenshot 2025-10-11 133503.png']
                 };
                 
                 return evidenceMap[cameraNumber] || [];
@@ -985,6 +999,35 @@
             }
         };
 
+        // Toggle video fullscreen
+        function toggleVideoFullscreen() {
+            const video = document.getElementById('chat-video-player');
+            if (!video) return;
+            
+            if (!document.fullscreenElement) {
+                video.requestFullscreen().catch(err => {
+                    console.error(`Error attempting to enable fullscreen: ${err.message}`);
+                });
+            } else {
+                document.exitFullscreen();
+            }
+        }
+        
+        // Update video timestamp
+        function updateChatVideoTimestamp() {
+            const timestampElement = document.getElementById('chat-video-timestamp');
+            if (timestampElement) {
+                const now = new Date();
+                const timeString = now.toLocaleTimeString('en-US', { 
+                    hour12: false,
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit'
+                });
+                timestampElement.textContent = timeString;
+            }
+        }
+        
         // Camera click handler function
         function openCameraChat(cameraNumber) {
             console.log(`🎥 Opening chat for Camera ${cameraNumber}`);
@@ -996,12 +1039,15 @@
                 chatTabId: 'camera_surveillance',
                 entityId: `camera_${cameraNumber}`,
                 entityType: 'camera_feed',
-                controlId: `camera_${cameraNumber}_controls`
+                controlId: `camera_${cameraNumber}_controls`,
+                isVideoMode: true
             };
             
-            // Open the chat
+            // Open the chat in video mode
             openAIChat({
                 selectedCamera: cameraNumber,
+                isVideoMode: true,
+                videoSource: `/Live Video/camara ${cameraNumber}.mp4`,
                 contextMessage: `You've selected Camera ${cameraNumber}. I can help you analyze this camera's feed, show evidence of safety violations, check helmet compliance, or provide detailed reports. What would you like to know about Camera ${cameraNumber}?`
             });
         }
@@ -1041,6 +1087,65 @@
             if (typeof bootstrap === 'undefined') {
                 console.error('❌ Bootstrap is not loaded!');
                 return;
+            }
+            
+            // Configure chat mode and width
+            const isVideoMode = options && options.isVideoMode;
+            const videoContainer = document.getElementById('chat-video-container');
+            const chatHeaderTitle = document.getElementById('chat-header-title');
+            
+            if (isVideoMode) {
+                // Half-screen mode with video
+                offcanvasElement.setAttribute('data-chat-mode', 'video');
+                offcanvasElement.style.width = '50vw';
+                offcanvasElement.style.minWidth = '600px';
+                
+                // Show video player
+                if (videoContainer) {
+                    videoContainer.classList.remove('d-none');
+                    
+                    // Load video source
+                    const videoSource = document.getElementById('chat-video-source');
+                    const videoPlayer = document.getElementById('chat-video-player');
+                    if (videoSource && videoPlayer && options.videoSource) {
+                        videoSource.src = options.videoSource;
+                        videoPlayer.load();
+                        videoPlayer.play();
+                        
+                        // Update timestamp
+                        if (videoTimestampInterval) {
+                            clearInterval(videoTimestampInterval);
+                        }
+                        updateChatVideoTimestamp();
+                        videoTimestampInterval = setInterval(updateChatVideoTimestamp, 1000);
+                    }
+                }
+                
+                // Update header title
+                if (chatHeaderTitle && options.selectedCamera) {
+                    chatHeaderTitle.textContent = `Camera ${options.selectedCamera} - Algo Vision Assistant`;
+                }
+            } else {
+                // Normal full-width mode
+                offcanvasElement.setAttribute('data-chat-mode', 'normal');
+                offcanvasElement.style.width = ''; // Reset to default
+                offcanvasElement.style.minWidth = ''; // Reset minWidth
+                
+                // Clear timestamp interval
+                if (videoTimestampInterval) {
+                    clearInterval(videoTimestampInterval);
+                    videoTimestampInterval = null;
+                }
+                
+                // Hide video player
+                if (videoContainer) {
+                    videoContainer.classList.add('d-none');
+                }
+                
+                // Reset header title
+                if (chatHeaderTitle) {
+                    chatHeaderTitle.textContent = 'Algo Vision Assistant';
+                }
             }
             
             try {
