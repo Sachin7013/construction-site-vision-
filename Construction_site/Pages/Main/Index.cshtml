@@ -580,6 +580,35 @@
                   </div>
                 </div>
               </div>
+
+              <div class="col-lg-6 col-xl-4">
+                <div class="card h-100">
+                  <div class="card-header bg-body-tertiary py-2">
+                    <div class="d-flex align-items-center justify-content-between">
+                      <div class="d-flex align-items-center">
+                        <span class="fa-solid fa-video text-primary me-2 fs-8"></span>
+                        <div>
+                          <h6 class="mb-0 fs-8">Camera 9 <small class="text-body-tertiary">- Zone H</small></h6>
+                        </div>
+                      </div>
+                      <span class="badge badge-phoenix badge-phoenix-danger fs-9 d-flex align-items-center"><span class="fas fa-circle me-1" style="font-size: 0.5em;"></span>LIVE</span>
+                    </div>
+                  </div>
+                  <div class="card-body p-0">
+                    <div class="position-relative">
+                      <img src="http://localhost:5000/video_feed" 
+                           class="w-100 camera-video" 
+                           data-camera="8" 
+                           style="height: 200px; object-fit: cover; cursor: pointer;" 
+                           onclick="openCameraChat(8)"
+                           alt="Live Camera Feed">
+                      <div class="position-absolute top-0 start-0 p-2">
+                        <small class="badge bg-dark bg-opacity-75 text-white" id="camera9-timestamp">--:--:--</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>  
             </div>
             
           </div>
@@ -1533,7 +1562,8 @@
                 { id: 'camera5-timestamp', offset: -1 },
                 { id: 'camera6-timestamp', offset: -4 },
                 { id: 'camera7-timestamp', offset: -2 },
-                { id: 'camera8-timestamp', offset: -1 }
+                { id: 'camera8-timestamp', offset: -1 },
+                { id: 'camera9-timestamp', offset: 0 }
             ];
             
             cameras.forEach(camera => {
